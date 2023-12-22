@@ -1,0 +1,59 @@
+body { 
+    color: #58c26a; 
+    background-color: #0f252a;
+}
+
+.banner-container {
+    position: relative;
+    display: inline-block; /* Or 'block' depending on your layout */
+}
+
+.banner-image {
+    width: 100%; /* Adjust as needed */
+    height: auto; /* Adjust as needed */
+}
+
+.experiment-text {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0); /* Optional: for better readability */
+    padding: 2px 2px 2px 2px; /* Adjust as needed */
+    /* Additional styling (e.g., font size, color) as needed */
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 19px;
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+}
+
+.mt-5 {
+    margin-top: -10px !important;
+}
+
+.overwrite-tab-color {
+    color: #58c264;
+    font-weight: bold;
+}
+.overwrite-tab-color:hover {
+    color: #6dff8b;
+    font-weight: bold;
+}
+
+#offer_summary td {
+    padding: 15px;
+    border: 1px solid #58c264;
+}
+
+.offer_img {
+    margin-top: 10px !important;
+}
+
+.offer_div {
+    display: inline-block;
+    padding: 10px; 
+}
