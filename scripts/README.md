@@ -12,10 +12,10 @@ This folder contains scripts to set up and manage the MySQL database for the Off
 
 ### 1. Create the Database
 
-First, you need to create a new database where the tables will be installed:
+First, you need to edit the `setup_database.sql` file and change the name for your database on the first two lines:
 
 ```bash
-mysql -u your_username -p -e "CREATE DATABASE offercode_db;"
+nano setup_database.sql
 ```
 
 ### 2. Update setup script with your settings
