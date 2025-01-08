@@ -109,13 +109,25 @@ fetch('https://offerco.de/api/v1/getshortcode', {
 ### Response Structure
 ```json
 {
-  "status": "success" or "error",
+  "status": "success",
+  "data": {
+    "short_code": "string",
+    "offer_code": "string",
+    "description": "string",
+    "offer_id": "string"
+  }
+}
+```
+
+```json
+{
+  "status": "error",
   "data": {
     "short_code": "string",
     "offer_code": "string",
     "description": "string",
     "offer_id": "string"
   },
-  "message": "string" // Only present if status is "error"
+  "message": "string"
 }
 ```
