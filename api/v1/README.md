@@ -122,12 +122,7 @@ fetch('https://offerco.de/api/v1/getshortcode', {
 ```json
 {
   "status": "error",
-  "data": {
-    "short_code": "string",
-    "offer_code": "string",
-    "description": "string",
-    "offer_id": "string"
-  },
+  "data": [],
   "message": "string"
 }
 ```
