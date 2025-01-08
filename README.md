@@ -1,4 +1,4 @@
-# offerco.de
+# OfferCo.de
 
 ### Introduction
 
@@ -18,23 +18,26 @@ OfferCo.de is a web-based service that provides short URLs for offer codes. User
 3. Ensure that your server meets the following requirements:
     * PHP 7.0 or higher
     * MySQL Database
+4. The scripts folder now has additional tools for setting up your own version.
 
 ### Usage
 
 * Generating a Short Code:
-
-    1. Navigate to the 'Get Offer Short Code' tab.
-    2. Enter the full offer code and an optional description.
-    3. Submit the form to receive a unique short code.
+    3.1 Navigate to the 'Get Offer Short Code' tab.
+    3.2 Enter the full offer code and an optional description.
+    3.3 Submit the form to receive a unique short code.
 
 * Retrieving an Offer Code:
+    3.1 Use the generated short code in the 'View Offer' tab or by accessing `https://offerco.de/[short_code]`.
+    3.2 The original offer code and description will be displayed.
 
-    1. Use the generated short code in the 'View Offer' tab or by accessing `https://offerco.de/[short_code]`.
-    2. The original offer code and description will be displayed.
-
-### API Integration
+### API Integration with Dexie
 
 The service integrates with `https://api.dexie.space/v1/offers/` to retrieve additional details about the offer. This includes the status of the offer, dates, price, and items offered and requested.
+
+### OfferCo.de API
+
+This API provides two endpoints for managing offer codes and associated shortcodes. Both endpoints use POST methods and expect data in form format with an API key for authentication. See the full documentation [here](https://offerco.de/api/v1/).
 
 ### Files Description
 
@@ -52,5 +55,4 @@ The service integrates with `https://api.dexie.space/v1/offers/` to retrieve add
 Contributions to the project are welcome. Please follow the standard GitHub pull request process.
 
 ### License
-
 Apache-2.0
