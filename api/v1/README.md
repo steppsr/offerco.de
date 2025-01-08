@@ -32,7 +32,7 @@ This API provides two endpoints for managing offer codes and associated shortcod
 - **Method**: `POST`
 - **Parameters**:
   - `api_key` (string, required): The API key for authentication.
-  - `offer_code` (string, required): The offer code you want to associate with a new or existing short code.
+  - `offer_code` (string, required): The offer code you want to associate with a new short code.
   - `description` (string, optional): A description for the offer. If provided, it will be stored with the offer code.
 
 **Description**: This endpoint generates or retrieves a short code for a given offer code. If no short code exists for the offer code, a new unique short code is generated, inserted into the database, and returned.
