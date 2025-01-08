@@ -39,7 +39,7 @@ This API provides two endpoints for managing offer codes and associated shortcod
 
 ## Authentication
 - **API Key**: Each request must include an `api_key` parameter. 
-  - API keys are associated with Twitter usernames (used as `user_id` in our system).
+  - API keys are associated with Twitter usernames.
   - Keys can be given upon request via DM to @steppsr on X.
 - **Security**: API keys should be kept confidential. Do not share them in public repositories or over insecure channels.
 
