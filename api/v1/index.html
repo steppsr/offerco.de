@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offer Code API</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        body {
+            padding-top: 5rem;
+            background-color: #F0FFF0; /* Light green background */
+        }
+        h1, h2, h3 {
+            color: #003300; /* Dark green for headings */
+        }
+        .container {
+            background-color: #FFFFFF; /* White container for content */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 100, 0, 0.1); /* Green shadow for depth */
+        }
+        pre {
+            background-color: #ddd; /* Sea green background for code blocks */
+            color: #000; /* White text for code blocks */
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #ddd; /* Sea green background for inline code */
+            color: #000; /* White text for inline code */
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #000; /* Black text for contrast */
+
+        }
+        .list-group-item {
+            background-color: #dedede; /* Very light green for list items */
+            border-color: #666; /* Light green border for list items */
+        }
+        .list-group-item a {
+            color: #003300; /* Dark green for links within list items */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-4 mb-4">Offer Code API</h1>
+        <p>This API provides two endpoints for managing offer codes and associated shortcodes. Both endpoints use <code>POST</code> methods and expect data in form format with an API key for authentication.</p>
+
+        <h2 class="mt-5 mb-3">Table of Contents</h2>
+        <ul class="list-group mb-5">
+            <li class="list-group-item"><a href="#endpoints">Endpoints</a>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="#get-offer">GET Offer</a></li>
+                    <li class="list-group-item"><a href="#get-shortcode">GET Shortcode</a></li>
+                </ul>
+            </li>
+            <li class="list-group-item"><a href="#authentication">Authentication</a></li>
+            <li class="list-group-item"><a href="#error-handling">Error Handling</a></li>
+            <li class="list-group-item"><a href="#usage-examples">Usage Examples</a></li>
+        </ul>
+
+        <h2 id="endpoints" class="mt-5 mb-3">Endpoints</h2>
+
+        <h3 id="get-offer" class="mt-4 mb-2">GET Offer</h3>
+        <ul>
+            <li><strong>URL</strong>: <code>/api/v1/getoffer</code></li>
+            <li><strong>Method</strong>: <code>POST</code></li>
+            <li><strong>Parameters</strong>:
+                <ul>
+                    <li><code>api_key</code> (string, required): The API key for authentication.</li>
+                    <li><code>short_code</code> (string, required): The short code to look up the offer.</li>
+                </ul>
+            </li>
+        </ul>
+        <p><strong>Description</strong>: This endpoint fetches the offer code, description, and a unique offer ID based on the provided <code>short_code</code> from the database.</p>
+
+        <h3 id="get-shortcode" class="mt-4 mb-2">GET Shortcode</h3>
+        <ul>
+            <li><strong>URL</strong>: <code>/api/v1/getshortcode</code></li>
+            <li><strong>Method</strong>: <code>POST</code></li>
+            <li><strong>Parameters</strong>:
+                <ul>
+                    <li><code>api_key</code> (string, required): The API key for authentication.</li>
+                    <li><code>offer_code</code> (string, required): The offer code you want to associate with a new or existing short code.</li>
+                    <li><code>description</code> (string, optional): A description for the offer. If provided, it will be stored with the offer code.</li>
+                </ul>
+            </li>
+        </ul>
+        <p><strong>Description</strong>: This endpoint generates or retrieves a short code for a given <code>offer_code</code>. If no short code exists for the offer code, a new unique short code is generated, inserted into the database, and returned.</p>
+
+        <h2 id="authentication" class="mt-5 mb-3">Authentication</h2>
+        <ul>
+            <li><strong>API Key</strong>: Each request must include an <code>api_key</code> parameter.
+                <ul>
+                    <li>API keys are associated with Twitter usernames (used as <code>user_id</code> in our system).</li>
+                    <li>Keys can be given upon request via DM to <a href="https://twitter.com/steppsr" class="highlight">@steppsr</a> on X.</li>
+                </ul>
+            </li>
+            <li><strong>Security</strong>: API keys should be kept confidential. Do not share them in public repositories or over insecure channels.</li>
+        </ul>
+
+        <h2 id="error-handling" class="mt-5 mb-3">Error Handling</h2>
+        <ul>
+            <li>Both endpoints return a JSON response with a <code>status</code> field indicating either “success” or “error”.</li>
+            <li>When an error occurs, a <code>message</code> field in the JSON response provides details on the error.</li>
+            <li>Possible errors include:
+                <ul>
+                    <li>API key not provided</li>
+                    <li>Invalid or inactive API key</li>
+                    <li>API key has expired</li>
+                    <li>Shortcode or offer code not provided</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2 id="usage-examples" class="mt-5 mb-3">Usage Examples</h2>
+
+        <h3 id="using-curl" class="mt-4 mb-2">Using <code>curl</code></h3>
+        <pre><code class="language-bash"># For GET Offer
+curl -X POST -d "api_key=YOUR_API_KEY&short_code=9K1xX" "https://offerco.de/api/v1/getoffer"
+
+# For GET Shortcode (standard form method)
+curl -X POST -d "api_key=YOUR_API_KEY&offer_code=OFFER-ABC&description=This%20is%20a%20test%20offer" "https://offerco.de/api/v1/getshortcode"
+
+# For GET Shortcode (using form-data to avoid URL encoding)
+curl -X POST -F "api_key=YOUR_API_KEY" -F "offer_code=OFFER-ABC" -F "description=This is a test offer" "https://offerco.de/api/v1/getshortcode"</code></pre>
+
+        <h3 id="using-javascript" class="mt-4 mb-2">Using <code>Javascript</code></h3>
+        <pre><code class="language-javascript">// For GET Offer
+fetch('https://offerco.de/api/v1/getoffer', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+  },
+  body: 'api_key=YOUR_API_KEY&short_code=XXXXX'
+})
+.then(response => response.json())
+.then(data => console.log(data));
+
+// For GET Shortcode (standard form method)
+fetch('https://offerco.de/api/v1/getshortcode', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+  },
+  body: 'api_key=YOUR_API_KEY&offer_code=OFFER_CODE&description=This%20is%20a%20test%20offer'
+})
+.then(response => response.json())
+.then(data => console.log(data));
+
+// For GET Shortcode (using FormData to avoid manual URL encoding)
+const formData = new FormData();
+formData.append('api_key', 'YOUR_API_KEY');
+formData.append('offer_code', 'OFFER_CODE');
+formData.append('description', 'This is a test offer');
+
+fetch('https://offerco.de/api/v1/getshortcode', {
+  method: 'POST',
+  body: formData
+})
+.then(response => response.json())
+.then(data => console.log(data));</code></pre>
+
+        <h3 id="response-structure" class="mt-4 mb-2">Response Structure</h3>
+        <pre><code class="language-json">{
+  "status": "success" or "error",
+  "data": {
+    "short_code": "string",
+    "offer_code": "string",
+    "description": "string",
+    "offer_id": "string"
+  },
+  "message": "string" // Only present if status is "error"
+}</code></pre>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /api/v1/
+
+    # If an existing file or directory, don't rewrite
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Rewrite rules for endpoints
+    RewriteRule ^getoffer$ getoffer.php [NC,L]
+    RewriteRule ^getshortcode$ getshortcode.php [NC,L]
+</IfModule>
